@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GamePulse — Game Health Signal Engine",
+  title: "GamePulse: Game Health Signal Engine",
   description: "Genre-agnostic competitive intelligence for game studios. Transparent, confidence-scored health tracking.",
 };
 

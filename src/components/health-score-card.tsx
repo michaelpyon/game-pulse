@@ -28,7 +28,7 @@ export function HealthScoreCard({ game }: { game: GameWithHealth }) {
   return (
     <Link
       href={`/games/${game.id}`}
-      className={`group block border border-border border-l-2 ${borderAccent} bg-card transition-all duration-200 hover:border-cyan/30 hover:border-l-cyan hover:-translate-y-0.5 hover:shadow-lg hover:shadow-cyan/5`}
+      className={`group block border border-border border-l-2 ${borderAccent} bg-card transition-[border-color,box-shadow,transform] duration-200 hover:border-cyan/30 hover:border-l-cyan hover:-translate-y-0.5 hover:shadow-lg hover:shadow-cyan/5`}
     >
       {/* Header */}
       <div className="flex items-start justify-between border-b border-border px-4 py-3">
