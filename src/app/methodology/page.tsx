@@ -3,7 +3,7 @@ const STEPS = [
     num: "01",
     title: "The Credit Score Model",
     body: `GamePulse treats game health like a credit score: a single composite
-      number (0\u2013100) built from multiple weighted signals. No single
+      number (0-100) built from multiple weighted signals. No single
       metric defines health. The score reflects overall vitality across
       player engagement, community sentiment, content cadence, and creator
       ecosystem activity.`,
@@ -53,7 +53,7 @@ const STEPS = [
     title: "Confidence & Reliability",
     body: `Every score includes a confidence band. Confidence is driven by
       signal coverage (how many of the available signals are active) and
-      dynamic reliability \u2014 a per-signal quality score adjusted by data
+      dynamic reliability ,  a per-signal quality score adjusted by data
       volume and recency. A game with 5/5 signals active and recent data
       gets High confidence. A game with 3/6 signals or stale data gets
       Medium or Low.`,
@@ -62,7 +62,7 @@ const STEPS = [
     num: "05",
     title: "Sentiment-Adjusted Velocity",
     body: `Raw engagement spikes can be misleading. A controversy drives Reddit
-      posts and Twitter mentions up \u2014 but that\u2019s not healthy growth. GamePulse
+      posts and Twitter mentions up ,  but that's not healthy growth. GamePulse
       applies sentiment analysis to velocity metrics, dampening negative
       sentiment surges and amplifying genuine positive momentum.`,
   },
