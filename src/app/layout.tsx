@@ -13,9 +13,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const description =
+  "Genre-agnostic competitive intelligence for game studios. Transparent, confidence-scored health tracking.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://game-pulse.vercel.app"),
   title: "GamePulse: Game Health Signal Engine",
-  description: "Genre-agnostic competitive intelligence for game studios. Transparent, confidence-scored health tracking.",
+  description,
+  openGraph: {
+    title: "GamePulse: Game Health Signal Engine",
+    description,
+    url: "https://game-pulse.vercel.app",
+    siteName: "GamePulse",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GamePulse: Game Health Signal Engine",
+    description,
+  },
 };
 
 export default function RootLayout({
