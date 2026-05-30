@@ -1,9 +1,22 @@
 import type { HealthSnapshot, SparklinePoint, GameWithHealth, TrendDirection } from "@/lib/types";
 import { games } from "./games";
-import { trendDirection } from "@/lib/engine/scoring";
+import { trendDirection, round } from "@/lib/engine/scoring";
 
 // Generate 30 days of plausible health data per game
 // Each game has a narrative arc encoded in its trajectory
+
+// Deterministic pseudo-jitter so the sample dataset is stable across builds.
+// Seeded by a string key, returns a value in [0, 1). This replaces Math.random()
+// so two builds of the same sample data always produce identical scores.
+function seededUnit(key: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < key.length; i++) {
+    h ^= key.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  // Map the 32-bit hash to [0, 1)
+  return ((h >>> 0) % 100000) / 100000;
+}
 
 interface GameTrajectory {
   gameId: string;
@@ -146,10 +159,10 @@ function generateSignalDetail(gameId: string, scores: GameTrajectory) {
   return signals.map((s) => ({
     signalId: s.signalId,
     signalName: s.signalName,
-    score: Math.round(scores.baseScore + (Math.random() - 0.5) * 20),
+    score: Math.round(scores.baseScore + (seededUnit(`${gameId}_${s.signalId}_score`) - 0.5) * 20),
     weight: s.weight,
     weightedContribution: Math.round(scores.baseScore * s.weight),
-    effectiveReliability: 0.7 + Math.random() * 0.25,
+    effectiveReliability: round(0.7 + seededUnit(`${gameId}_${s.signalId}_rel`) * 0.25, 2),
     trendPct: s.trendPct,
     sentimentScore: s.sentimentScore,
   }));
@@ -173,9 +186,9 @@ function generateSnapshots(): HealthSnapshot[] {
       // Sub-index scores drift slightly from their base
       const dayJitter = (29 - day) / 29;
       const momentum = Math.max(5, Math.min(100, t.momentum + (score - t.baseScore) * 0.5 * dayJitter));
-      const community = Math.max(5, Math.min(100, t.community + (Math.random() - 0.5) * 4));
-      const content = Math.max(5, Math.min(100, t.content + (Math.random() - 0.5) * 2));
-      const creator = Math.max(5, Math.min(100, t.creator + (Math.random() - 0.5) * 3));
+      const community = Math.max(5, Math.min(100, t.community + (seededUnit(`${t.gameId}_${day}_community`) - 0.5) * 4));
+      const content = Math.max(5, Math.min(100, t.content + (seededUnit(`${t.gameId}_${day}_content`) - 0.5) * 2));
+      const creator = Math.max(5, Math.min(100, t.creator + (seededUnit(`${t.gameId}_${day}_creator`) - 0.5) * 3));
 
       snapshots.push({
         id: `${t.gameId}_${dateStr}`,

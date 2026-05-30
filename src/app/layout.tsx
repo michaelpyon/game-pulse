@@ -58,7 +58,7 @@ export default function RootLayout({
                 </span>
               </div>
               <p className="text-xs text-muted-foreground">
-                Mock data for demonstration. Scores refresh daily.
+                Sample data for demonstration (snapshot, Mar 2026).
               </p>
               <span className="text-xs font-mono text-muted-foreground">
                 Built by Michael Pyon
