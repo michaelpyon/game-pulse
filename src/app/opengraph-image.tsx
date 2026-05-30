@@ -66,7 +66,7 @@ export default function OpenGraphImage() {
           }}
         >
           <div style={{ color: "#22C55E" }}>&gt;</div>
-          8 titles · confidence-scored sub-indices · daily refresh
+          8 titles · confidence-scored sub-indices · sample dataset, Mar 2026
         </div>
       </div>
     ),

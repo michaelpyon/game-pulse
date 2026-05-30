@@ -46,25 +46,28 @@ Verified against repo HEAD on this pass.
 
 ## Prioritized plan
 
-### Highest leverage (done this pass)
+### Shipped wave 1
 
-1. Make the sample dataset deterministic and kill the "refresh daily" contradiction.
-   Files: `src/lib/data/health-snapshots.ts`, `src/app/layout.tsx`. Why it matters to
-   the evangelist: the entire value is a number he will defend in a thread. A number
-   that silently changes per build, plus a footer claiming a daily refresh that does not
-   exist, is exactly the "this is fake" smell that makes him bounce. Effort S.
-   Deploy needed to reach users: yes (blocked by the deploy mismatch below).
+1. Made the sample dataset deterministic and killed the "refresh daily" footer
+   contradiction. Files: `src/lib/data/health-snapshots.ts`, `src/app/layout.tsx`.
 
-### Quick wins (next, all S, additive)
+### Shipped wave 2
 
-2. Replace the boilerplate `README.md`. It is still stock create-next-app text. Add what
-   GamePulse is, that it runs on a disclosed March 2026 sample dataset, and the intended
-   signal sources. Why: anyone the evangelist sends to the repo currently sees generic
-   Next.js docs. Effort S. Deploy needed: no.
-3. Tighten metadata and social card copy so the share preview says "sample / signal
-   model" rather than implying a live tracker. Files: `src/app/layout.tsx` metadata,
-   `src/app/opengraph-image.tsx`. Why: the screenshot and link preview are the share
-   surface. Effort S. Deploy needed: yes.
+2. Replaced the boilerplate `README.md`. It is now a real GamePulse readme: what the
+   app is, the disclosed March 2026 sample dataset (deterministic, not a live feed),
+   the 4 sub-indices, the intended (not yet connected) signal sources, and a status
+   note that the public deployment still serves an older build. Anyone the evangelist
+   sends to the repo now sees the model and the honesty framing, not Next.js docs.
+3. Tightened the share surface so the link preview and social card no longer imply a
+   live tracker. Fixed the last user-facing "daily refresh" claim, which was still on
+   the og:image card (`src/app/opengraph-image.tsx`), changed it to "sample dataset,
+   Mar 2026". Rewrote the metadata description (`src/app/layout.tsx`) to name the
+   signal model (Momentum, Community, Content, Creator) and disclose the sample
+   snapshot. This removes the exact "fake live feed" smell from the one surface the
+   evangelist screenshots and links. Deploy needed to reach users: yes (blocked below).
+
+### Quick wins (still open, all S, additive)
+
 4. Add a one-line "How the score is built" tooltip or caption on the home grid linking to
    `/methodology`. Files: `src/app/page.tsx`, existing tooltip UI. Why: lets the
    skeptic verify credibility in one click before sharing. Effort S. Deploy needed: yes.

@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 const description =
-  "Genre-agnostic competitive intelligence for game studios. Transparent, confidence-scored health tracking.";
+  "Genre-agnostic game health signal model: one transparent, confidence-scored 0 to 100 number across Momentum, Community, Content, and Creator. Runs on a disclosed sample dataset (snapshot, Mar 2026).";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://game-pulse.vercel.app"),
