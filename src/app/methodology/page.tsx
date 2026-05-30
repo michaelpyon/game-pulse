@@ -97,10 +97,20 @@ const DATA_SOURCES = [
 export default function MethodologyPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mb-10">
+      <div className="mb-6">
         <h1 className="text-2xl font-semibold text-foreground">How It Works</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           How GamePulse computes health scores
+        </p>
+      </div>
+
+      <div className="mb-10 border border-amber-500/40 bg-amber-500/10 px-5 py-4 text-sm text-foreground">
+        <p className="font-medium">Sample data, not a live feed.</p>
+        <p className="mt-1 text-muted-foreground">
+          The sources and signals below describe the intended signal
+          architecture. The current build uses a fixed sample dataset (snapshot
+          from March 2026), not live API connections. Scores are illustrative,
+          not real-time measurements.
         </p>
       </div>
 
@@ -142,8 +152,12 @@ export default function MethodologyPage() {
         <section className="border border-border bg-card px-6 py-5">
           <div className="flex items-baseline gap-3 mb-3">
             <span className="font-mono text-xs text-cyan/60">08</span>
-            <h2 className="label-upper text-foreground">Data Sources</h2>
+            <h2 className="label-upper text-foreground">Intended Data Sources</h2>
           </div>
+          <p className="text-xs text-muted-foreground">
+            The signal architecture below is what GamePulse is designed to pull.
+            None are connected in this sample build.
+          </p>
           <div className="grid grid-cols-2 gap-3 mt-3">
             {DATA_SOURCES.map((ds) => (
               <div
