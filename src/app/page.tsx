@@ -35,7 +35,7 @@ export default function OverviewPage() {
           Health Overview
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          {gamesWithHealth.length} titles tracked across 2 genres, updated daily
+          {gamesWithHealth.length} titles tracked across 2 genres (sample data, Mar 2026)
         </p>
       </div>
 
